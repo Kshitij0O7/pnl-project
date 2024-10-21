@@ -56,11 +56,17 @@ const getPnL = async (token, wallet) => {
     for(let i in sellTrades){
         let amount = parseFloat(sellTrades[i].Trade.Sell.Amount);
         let sellPrice = sellTrades[i].Trade.Sell.PriceInUSD;
-
-        let margin = amount*(sellPrice-average);
+        // console.log(sellPrice-average);
+        let difference = sellPrice-average
+        let margin = amount*difference;
+        // console.log(amount, margin, difference)
         pnl += margin;
     }
+    // console.log(average);
     console.log(pnl);
 }
 
-getPnL("0x6982508145454ce325ddbe47a25d4ec3d2311933", "0xae2fc483527b8ef99eb5d9b44875f005ba1fae13");
+getPnL("0x6982508145454ce325ddbe47a25d4ec3d2311933", "0x2107662b0eb1f95a42f47f667c6d4622fe1c9231");
+
+// 0.000028572993474997303
+// -34665585129.98317 USD
